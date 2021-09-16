@@ -1,0 +1,425 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="AirTransferLinessDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Acente">
+    <Key>
+      <PropertyRef Name="AcenteID" />
+    </Key>
+    <Property Name="AcenteID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SehirID" Type="Int32" />
+    <Property Name="UlkeID" Type="Int32" />
+    <Property Name="AcenteAdi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Adres" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="FirmaUnvan" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Yetkili" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Telefon" Type="String" MaxLength="11" FixedLength="false" Unicode="true" />
+    <Property Name="KayitTarih" Type="DateTime" Precision="3" />
+    <Property Name="Sozlesme" Type="Int32" />
+    <Property Name="SozlesmeOnayTarih" Type="DateTime" Precision="3" />
+    <Property Name="SonLogin" Type="DateTime" Precision="3" />
+    <Property Name="Iban" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="VergiDaire" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="VergiDaireNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="YetkiliTel" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Kredi" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="FaturaAdres" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Notlar" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="Sifre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="YetkiliEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Sehir" Relationship="Self.FK_Acente_Sehir" FromRole="Acente" ToRole="Sehir" />
+    <NavigationProperty Name="Ulke" Relationship="Self.FK_Acente_Ulke" FromRole="Acente" ToRole="Ulke" />
+    <NavigationProperty Name="Surucu" Relationship="Self.FK_Surucu_Acente" FromRole="Acente" ToRole="Surucu" />
+    <NavigationProperty Name="Transfer" Relationship="Self.FK_Transfer_Acente" FromRole="Acente" ToRole="Transfer" />
+  </EntityType>
+  <EntityType Name="Arac">
+    <Key>
+      <PropertyRef Name="aracID" />
+    </Key>
+    <Property Name="aracID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="aracAdi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="bagaj" Type="Int32" />
+    <Property Name="aracSayisi" Type="Int32" />
+    <Property Name="aracResim" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="durum" Type="Int32" />
+    <Property Name="sira" Type="Int32" />
+    <NavigationProperty Name="Surucu" Relationship="Self.FK_Surucu_Arac" FromRole="Arac" ToRole="Surucu" />
+    <NavigationProperty Name="Transfer" Relationship="Self.FK_Transfer_Arac" FromRole="Arac" ToRole="Transfer" />
+  </EntityType>
+  <EntityType Name="Dil">
+    <Key>
+      <PropertyRef Name="dilID" />
+    </Key>
+    <Property Name="dilID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="dilKod" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="dilBayrak" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="dilAdi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Surucu" Relationship="Self.FK_Surucu_Dil" FromRole="Dil" ToRole="Surucu" />
+    <NavigationProperty Name="Transfer" Relationship="Self.FK_Transfer_Dil" FromRole="Dil" ToRole="Transfer" />
+  </EntityType>
+  <EntityType Name="Rezervasyon">
+    <Key>
+      <PropertyRef Name="rezervasyonID" />
+    </Key>
+    <Property Name="rezervasyonID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="uyeID" Type="Int32" />
+    <Property Name="acentaID" Type="Int32" />
+    <Property Name="kayıtTarih" Type="DateTime" Precision="3" />
+    <Property Name="fiyat" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="ekstrasızFiyat" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="tlFiyat" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="tlEkstrasızFiyat" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="doviz" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="euroKur" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="usdKur" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="indirimliFiyat" Type="Decimal" Precision="18" Scale="2" />
+    <NavigationProperty Name="Uye" Relationship="Self.FK_Rezervasyon_Uye" FromRole="Rezervasyon" ToRole="Uye" />
+  </EntityType>
+  <EntityType Name="Sehir">
+    <Key>
+      <PropertyRef Name="SehirID" />
+    </Key>
+    <Property Name="SehirID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SehirAd" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PlakaKod" Type="Int32" />
+    <NavigationProperty Name="Acente" Relationship="Self.FK_Acente_Sehir" FromRole="Sehir" ToRole="Acente" />
+    <NavigationProperty Name="Surucu" Relationship="Self.FK_Surucu_Sehir" FromRole="Sehir" ToRole="Surucu" />
+    <NavigationProperty Name="Transfer" Relationship="Self.FK_Transfer_Sehir" FromRole="Sehir" ToRole="Transfer" />
+  </EntityType>
+  <EntityType Name="Surucu">
+    <Key>
+      <PropertyRef Name="surucuID" />
+    </Key>
+    <Property Name="surucuID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="acentaID" Type="Int32" />
+    <Property Name="ulkeID" Type="Int32" />
+    <Property Name="sehirID" Type="Int32" />
+    <Property Name="aracID" Type="Int32" />
+    <Property Name="dilID" Type="Int32" />
+    <Property Name="surucuAdi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="telefon" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="plaka" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="kayıtTarih" Type="DateTime" Precision="3" />
+    <Property Name="sonLogin" Type="DateTime" Precision="3" />
+    <Property Name="tcKimlikNo" Type="String" MaxLength="11" FixedLength="false" Unicode="true" />
+    <Property Name="adres" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="sifre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="surucuTip" Type="Int32" />
+    <Property Name="surucuKomisyon" Type="Int32" />
+    <Property Name="sozlesme" Type="Int32" />
+    <Property Name="sozlesmeOnayTarih" Type="DateTime" Precision="3" />
+    <Property Name="faturaBilgisi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ıban" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="vergiDaire" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="vergiDaireNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="kredi" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="notlar" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Acente" Relationship="Self.FK_Surucu_Acente" FromRole="Surucu" ToRole="Acente" />
+    <NavigationProperty Name="Arac" Relationship="Self.FK_Surucu_Arac" FromRole="Surucu" ToRole="Arac" />
+    <NavigationProperty Name="Dil" Relationship="Self.FK_Surucu_Dil" FromRole="Surucu" ToRole="Dil" />
+    <NavigationProperty Name="Sehir" Relationship="Self.FK_Surucu_Sehir" FromRole="Surucu" ToRole="Sehir" />
+    <NavigationProperty Name="Ulke" Relationship="Self.FK_Surucu_Ulke" FromRole="Surucu" ToRole="Ulke" />
+    <NavigationProperty Name="Transfer" Relationship="Self.FK_Transfer_Surucu" FromRole="Surucu" ToRole="Transfer" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Transfer">
+    <Key>
+      <PropertyRef Name="transferID" />
+    </Key>
+    <Property Name="transferID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="sehirID" Type="Int32" />
+    <Property Name="aracID" Type="Int32" />
+    <Property Name="acentaID" Type="Int32" />
+    <Property Name="surucuID" Type="Int32" />
+    <Property Name="dilID" Type="Int32" />
+    <Property Name="nereden" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="nereye" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="fromName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="toName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="kisiSayisi" Type="Int32" />
+    <Property Name="bagajSayisi" Type="Int32" />
+    <Property Name="tarih" Type="DateTime" Precision="0" />
+    <Property Name="saat" Type="Time" Precision="7" />
+    <Property Name="km" Type="Int32" />
+    <Property Name="sureSaat" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="fiyat" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="ekstrasızFiyat" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="doviz" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="UlkeID" Type="Int32" />
+    <NavigationProperty Name="Acente" Relationship="Self.FK_Transfer_Acente" FromRole="Transfer" ToRole="Acente" />
+    <NavigationProperty Name="Arac" Relationship="Self.FK_Transfer_Arac" FromRole="Transfer" ToRole="Arac" />
+    <NavigationProperty Name="Dil" Relationship="Self.FK_Transfer_Dil" FromRole="Transfer" ToRole="Dil" />
+    <NavigationProperty Name="Sehir" Relationship="Self.FK_Transfer_Sehir" FromRole="Transfer" ToRole="Sehir" />
+    <NavigationProperty Name="Surucu" Relationship="Self.FK_Transfer_Surucu" FromRole="Transfer" ToRole="Surucu" />
+    <NavigationProperty Name="Ulke" Relationship="Self.FK_Transfer_Ulke" FromRole="Transfer" ToRole="Ulke" />
+  </EntityType>
+  <EntityType Name="Ulke">
+    <Key>
+      <PropertyRef Name="UlkeID" />
+    </Key>
+    <Property Name="UlkeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UlkeAd" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Bayrak" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Acente" Relationship="Self.FK_Acente_Ulke" FromRole="Ulke" ToRole="Acente" />
+    <NavigationProperty Name="Surucu" Relationship="Self.FK_Surucu_Ulke" FromRole="Ulke" ToRole="Surucu" />
+    <NavigationProperty Name="Transfer" Relationship="Self.FK_Transfer_Ulke" FromRole="Ulke" ToRole="Transfer" />
+  </EntityType>
+  <EntityType Name="Uye">
+    <Key>
+      <PropertyRef Name="uyeID" />
+    </Key>
+    <Property Name="uyeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="uyeAd" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="uyeSoyad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="sifre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="adres" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="telefon" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Rezervasyon" Relationship="Self.FK_Rezervasyon_Uye" FromRole="Uye" ToRole="Rezervasyon" />
+  </EntityType>
+  <Association Name="FK_Acente_Sehir">
+    <End Role="Sehir" Type="Self.Sehir" Multiplicity="0..1" />
+    <End Role="Acente" Type="Self.Acente" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sehir">
+        <PropertyRef Name="SehirID" />
+      </Principal>
+      <Dependent Role="Acente">
+        <PropertyRef Name="SehirID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Acente_Ulke">
+    <End Role="Ulke" Type="Self.Ulke" Multiplicity="0..1" />
+    <End Role="Acente" Type="Self.Acente" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Ulke">
+        <PropertyRef Name="UlkeID" />
+      </Principal>
+      <Dependent Role="Acente">
+        <PropertyRef Name="UlkeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Surucu_Acente">
+    <End Role="Acente" Type="Self.Acente" Multiplicity="0..1" />
+    <End Role="Surucu" Type="Self.Surucu" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Acente">
+        <PropertyRef Name="AcenteID" />
+      </Principal>
+      <Dependent Role="Surucu">
+        <PropertyRef Name="acentaID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Transfer_Acente">
+    <End Role="Acente" Type="Self.Acente" Multiplicity="0..1" />
+    <End Role="Transfer" Type="Self.Transfer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Acente">
+        <PropertyRef Name="AcenteID" />
+      </Principal>
+      <Dependent Role="Transfer">
+        <PropertyRef Name="acentaID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Surucu_Arac">
+    <End Role="Arac" Type="Self.Arac" Multiplicity="0..1" />
+    <End Role="Surucu" Type="Self.Surucu" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Arac">
+        <PropertyRef Name="aracID" />
+      </Principal>
+      <Dependent Role="Surucu">
+        <PropertyRef Name="aracID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Transfer_Arac">
+    <End Role="Arac" Type="Self.Arac" Multiplicity="0..1" />
+    <End Role="Transfer" Type="Self.Transfer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Arac">
+        <PropertyRef Name="aracID" />
+      </Principal>
+      <Dependent Role="Transfer">
+        <PropertyRef Name="aracID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Surucu_Dil">
+    <End Role="Dil" Type="Self.Dil" Multiplicity="0..1" />
+    <End Role="Surucu" Type="Self.Surucu" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Dil">
+        <PropertyRef Name="dilID" />
+      </Principal>
+      <Dependent Role="Surucu">
+        <PropertyRef Name="dilID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Transfer_Dil">
+    <End Role="Dil" Type="Self.Dil" Multiplicity="0..1" />
+    <End Role="Transfer" Type="Self.Transfer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Dil">
+        <PropertyRef Name="dilID" />
+      </Principal>
+      <Dependent Role="Transfer">
+        <PropertyRef Name="dilID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Rezervasyon_Uye">
+    <End Role="Uye" Type="Self.Uye" Multiplicity="0..1" />
+    <End Role="Rezervasyon" Type="Self.Rezervasyon" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Uye">
+        <PropertyRef Name="uyeID" />
+      </Principal>
+      <Dependent Role="Rezervasyon">
+        <PropertyRef Name="uyeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Surucu_Sehir">
+    <End Role="Sehir" Type="Self.Sehir" Multiplicity="0..1" />
+    <End Role="Surucu" Type="Self.Surucu" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sehir">
+        <PropertyRef Name="SehirID" />
+      </Principal>
+      <Dependent Role="Surucu">
+        <PropertyRef Name="sehirID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Transfer_Sehir">
+    <End Role="Sehir" Type="Self.Sehir" Multiplicity="0..1" />
+    <End Role="Transfer" Type="Self.Transfer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sehir">
+        <PropertyRef Name="SehirID" />
+      </Principal>
+      <Dependent Role="Transfer">
+        <PropertyRef Name="sehirID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Surucu_Ulke">
+    <End Role="Ulke" Type="Self.Ulke" Multiplicity="0..1" />
+    <End Role="Surucu" Type="Self.Surucu" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Ulke">
+        <PropertyRef Name="UlkeID" />
+      </Principal>
+      <Dependent Role="Surucu">
+        <PropertyRef Name="ulkeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Transfer_Surucu">
+    <End Role="Surucu" Type="Self.Surucu" Multiplicity="0..1" />
+    <End Role="Transfer" Type="Self.Transfer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Surucu">
+        <PropertyRef Name="surucuID" />
+      </Principal>
+      <Dependent Role="Transfer">
+        <PropertyRef Name="surucuID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Transfer_Ulke">
+    <End Role="Ulke" Type="Self.Ulke" Multiplicity="0..1" />
+    <End Role="Transfer" Type="Self.Transfer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Ulke">
+        <PropertyRef Name="UlkeID" />
+      </Principal>
+      <Dependent Role="Transfer">
+        <PropertyRef Name="UlkeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="AirTransferLinessDBEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Acente" EntityType="Self.Acente" />
+    <EntitySet Name="Arac" EntityType="Self.Arac" />
+    <EntitySet Name="Dil" EntityType="Self.Dil" />
+    <EntitySet Name="Rezervasyon" EntityType="Self.Rezervasyon" />
+    <EntitySet Name="Sehir" EntityType="Self.Sehir" />
+    <EntitySet Name="Surucu" EntityType="Self.Surucu" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <EntitySet Name="Transfer" EntityType="Self.Transfer" />
+    <EntitySet Name="Ulke" EntityType="Self.Ulke" />
+    <EntitySet Name="Uye" EntityType="Self.Uye" />
+    <AssociationSet Name="FK_Acente_Sehir" Association="Self.FK_Acente_Sehir">
+      <End Role="Sehir" EntitySet="Sehir" />
+      <End Role="Acente" EntitySet="Acente" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Acente_Ulke" Association="Self.FK_Acente_Ulke">
+      <End Role="Ulke" EntitySet="Ulke" />
+      <End Role="Acente" EntitySet="Acente" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Surucu_Acente" Association="Self.FK_Surucu_Acente">
+      <End Role="Acente" EntitySet="Acente" />
+      <End Role="Surucu" EntitySet="Surucu" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Transfer_Acente" Association="Self.FK_Transfer_Acente">
+      <End Role="Acente" EntitySet="Acente" />
+      <End Role="Transfer" EntitySet="Transfer" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Surucu_Arac" Association="Self.FK_Surucu_Arac">
+      <End Role="Arac" EntitySet="Arac" />
+      <End Role="Surucu" EntitySet="Surucu" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Transfer_Arac" Association="Self.FK_Transfer_Arac">
+      <End Role="Arac" EntitySet="Arac" />
+      <End Role="Transfer" EntitySet="Transfer" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Surucu_Dil" Association="Self.FK_Surucu_Dil">
+      <End Role="Dil" EntitySet="Dil" />
+      <End Role="Surucu" EntitySet="Surucu" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Transfer_Dil" Association="Self.FK_Transfer_Dil">
+      <End Role="Dil" EntitySet="Dil" />
+      <End Role="Transfer" EntitySet="Transfer" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Rezervasyon_Uye" Association="Self.FK_Rezervasyon_Uye">
+      <End Role="Uye" EntitySet="Uye" />
+      <End Role="Rezervasyon" EntitySet="Rezervasyon" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Surucu_Sehir" Association="Self.FK_Surucu_Sehir">
+      <End Role="Sehir" EntitySet="Sehir" />
+      <End Role="Surucu" EntitySet="Surucu" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Transfer_Sehir" Association="Self.FK_Transfer_Sehir">
+      <End Role="Sehir" EntitySet="Sehir" />
+      <End Role="Transfer" EntitySet="Transfer" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Surucu_Ulke" Association="Self.FK_Surucu_Ulke">
+      <End Role="Ulke" EntitySet="Ulke" />
+      <End Role="Surucu" EntitySet="Surucu" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Transfer_Surucu" Association="Self.FK_Transfer_Surucu">
+      <End Role="Surucu" EntitySet="Surucu" />
+      <End Role="Transfer" EntitySet="Transfer" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Transfer_Ulke" Association="Self.FK_Transfer_Ulke">
+      <End Role="Ulke" EntitySet="Ulke" />
+      <End Role="Transfer" EntitySet="Transfer" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

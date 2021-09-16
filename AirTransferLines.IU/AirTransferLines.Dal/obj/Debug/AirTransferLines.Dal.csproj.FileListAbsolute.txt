@@ -1,0 +1,12 @@
+C:\Users\FURKAN\OneDrive\Masaüstü\Furkan2Deneme\AirTransferLines.IU\AirTransferLines.Dal\bin\Debug\AirTransferLines.Dal.dll.config
+C:\Users\FURKAN\OneDrive\Masaüstü\Furkan2Deneme\AirTransferLines.IU\AirTransferLines.Dal\bin\Debug\AirTransferLines.Dal.dll
+C:\Users\FURKAN\OneDrive\Masaüstü\Furkan2Deneme\AirTransferLines.IU\AirTransferLines.Dal\bin\Debug\AirTransferLines.Dal.pdb
+C:\Users\FURKAN\OneDrive\Masaüstü\Furkan2Deneme\AirTransferLines.IU\AirTransferLines.Dal\bin\Debug\EntityFramework.dll
+C:\Users\FURKAN\OneDrive\Masaüstü\Furkan2Deneme\AirTransferLines.IU\AirTransferLines.Dal\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\FURKAN\OneDrive\Masaüstü\Furkan2Deneme\AirTransferLines.IU\AirTransferLines.Dal\bin\Debug\EntityFramework.xml
+C:\Users\FURKAN\OneDrive\Masaüstü\Furkan2Deneme\AirTransferLines.IU\AirTransferLines.Dal\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\FURKAN\OneDrive\Masaüstü\Furkan2Deneme\AirTransferLines.IU\AirTransferLines.Dal\obj\Debug\AirTransferLines.Dal.csprojAssemblyReference.cache
+C:\Users\FURKAN\OneDrive\Masaüstü\Furkan2Deneme\AirTransferLines.IU\AirTransferLines.Dal\obj\Debug\AirTransferLines.Dal.csproj.CoreCompileInputs.cache
+C:\Users\FURKAN\OneDrive\Masaüstü\Furkan2Deneme\AirTransferLines.IU\AirTransferLines.Dal\obj\Debug\AirTransferLines.Dal.csproj.CopyComplete
+C:\Users\FURKAN\OneDrive\Masaüstü\Furkan2Deneme\AirTransferLines.IU\AirTransferLines.Dal\obj\Debug\AirTransferLines.Dal.dll
+C:\Users\FURKAN\OneDrive\Masaüstü\Furkan2Deneme\AirTransferLines.IU\AirTransferLines.Dal\obj\Debug\AirTransferLines.Dal.pdb

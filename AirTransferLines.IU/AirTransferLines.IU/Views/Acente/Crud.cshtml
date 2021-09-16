@@ -1,0 +1,24 @@
+﻿@model AirTransferLines.IU.Models.AcenteModel
+<h2>@Model.Header</h2>
+<hr />
+<form method="post">
+    <div class="form-group">
+        <input type="hidden" name="ace.AcenteID" value="@Model.ace.AcenteID" />
+    </div>
+    <div>
+        <label>Name</label>
+        <input class="form-control" type="text" name="ace.AcenteAdi" value="@Model.ace.AcenteAdi" />
+    </div>
+    <div>
+        <label>Email</label>
+        <input class="form-control" type="text" name="ace.Email" value="@Model.ace.Email"/>
+    </div>
+    <div>
+        <label>Telefon</label>
+        <input class="form-control" type="text" name="ace.Telefon" value="@Model.ace.Telefon" />
+    </div>
+    <input class="@Model.BtnClass" type="submit" value="@Model.BtnText" />
+</form>
+<form>
+    <input class="btn btn-warning" type="submit" value="İptal" formaction="/Acente/List" />
+</form>

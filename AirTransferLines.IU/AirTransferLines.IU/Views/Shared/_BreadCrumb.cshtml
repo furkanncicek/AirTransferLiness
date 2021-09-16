@@ -1,0 +1,30 @@
+﻿@using AirTransferLines.Contants;
+@{
+    string controller = ViewContext.RouteData.Values["controller"].ToString().ToLower();
+    string action = ViewContext.RouteData.Values["action"].ToString().ToLower();
+}
+
+<style type="text/css">
+    .page-title, .breadcrumb .breadcrumb-item {
+        text-transform: capitalize;
+    }
+</style>
+
+@if (controller == "dashboard" && action == "index")
+{
+    <h4 class="page-title">Ana Sayfa</h4>
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item active">
+           Air Transfer Lines
+        </li>
+    </ol>
+}
+else
+{
+    <h4 class="page-title">@Menus.actions</h4>
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="javascript:void(0);">Lexa</a></li>
+        <li class="breadcrumb-item"><a href="javascript:void(0);">@Menus.controllers</a></li>
+        <li class="breadcrumb-item active">@Menus.actions</li>
+    </ol>
+}
